@@ -33,7 +33,7 @@ class OrderController extends Controller
     {
         $order = $this->orderService->getById($id);
         $order->delete();
-        return redirect()->route('orders.list');
+        return redirect()->route('orders.list')->with('error' , 'Xoa thanh cong ');
     }
 
     function edit($id)
@@ -49,7 +49,7 @@ class OrderController extends Controller
     {
         $this->orderService->update($request, $id);
 
-        return redirect()->route('orders.list');
+        return redirect()->route('orders.list')->with('message', 'Cap nhap thanh cong');
     }
 
 }

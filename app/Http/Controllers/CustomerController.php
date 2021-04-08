@@ -26,7 +26,7 @@ class CustomerController extends Controller
     {
         $cutomers = Customer::find($id);
         $cutomers->delete();
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('error', 'Xoa thanh cong');
     }
 
 }

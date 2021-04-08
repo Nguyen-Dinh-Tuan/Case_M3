@@ -13,7 +13,11 @@
                                 class=""></span></div>
                         <span class="text"> </span>
                         <div>
+                            @if(\Illuminate\Support\Facades\Auth::user())
                             <a style="color: white" href="{{ route('showLogin') }}">Login </a>
+                            @else
+                                <a style="color: white" href="{{ route('frontend.logout') }}">Logout </a>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md pr-4 d-flex topper align-items-center">
@@ -45,7 +49,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <a class="dropdown-item" href="shop.html">Shop</a>
                         <a class="dropdown-item" href="wishlist.html">Wishlist</a>
-                        <a class="dropdown-item" href="product-single.html">Single Product</a>
+                        <a class="dropdown-item" href="">Single Product</a>
                         <a class="dropdown-item" href="{{ route('cart.index') }}">Cart</a>
                         <a class="dropdown-item" href="checkout.html">Checkout</a>
                     </div>

@@ -59,19 +59,20 @@
                                                            class="quantity form-control input-number"
                                                            value="{{$item['totalQty']}}" min="1"
                                                            max="100">
+                                                    <button type="submit"><span class="icon-update"></span></button>
+
                                                 </div>
                                             </td>
-
                                             <td class="total">{{$item['totalPrice']}}$</td>
-
                                         </tr>
                                     @endforeach
                                 @endif
                                 </tbody>
                             </table>
                             <div>
-                                <button class="btn btn-primary" type="submit">Update</button>
-                                <a onclick="return confirm('Ban chac chan muon xoa het? ')" href="{{ route('cart.deleteAll') }}" class="btn btn-primary">Delete</a>
+                                <a onclick="return confirm('Ban chac chan muon xoa het? ')" href="{{ route('cart.deleteAll') }}" class="btn btn-primary"><i class="bi bi-x-square-fill"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+                                    </svg></a>
                             </div>
                         </form>
                     </div>
@@ -116,24 +117,16 @@
                     <div class="cart-total mb-3">
                         <h3>Cart Totals</h3>
                         <p class="d-flex">
-                            <span>Subtotal</span>
-                            <span>$20.60</span>
-                        </p>
-                        <p class="d-flex">
-                            <span>Delivery</span>
-                            <span>$0.00</span>
-                        </p>
-                        <p class="d-flex">
-                            <span>Discount</span>
-                            <span>$3.00</span>
+                            <span>Quantity</span>
+                            <span>{{ number_format($cart->totalQty, 0, '.','.') }}</span>
                         </p>
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span>$17.60</span>
+                            <span>{{ number_format($cart->totalPrice, 0, '.','.') }}$</span>
                         </p>
                     </div>
-                    <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                    <p><a href="{{ route('cart.checkout') }}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
                 </div>
             </div>
         </div>

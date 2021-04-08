@@ -27,12 +27,15 @@ class ProductController extends Controller
     {
 
         $product = Product::where('id', '=', $id)->select('*')->first();
+        $products = Product::paginate(4);
+
         $des1 = html_entity_decode($product->description);
-        return view('frontend.showproduct', compact('product', 'des1'));
+        return view('frontend.singleproduct', compact('product', 'des1', 'products'));
     }
 
     public function show($id){
         $productlines = ProductLine::where('id',$id)->first();
+
         $product = Product::where('productLine',$productlines->id)->get();
         return view('frontend.productline',compact('product'));
     }
